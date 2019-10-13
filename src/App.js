@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect } from "react";
+import "./App.css";
+import Details from "./Components/Details";
+import Menu from "./Components/Menu";
+import SideBar from "./Components/SideBar";
 function App() {
+  var sidebarRef = React.createRef();
+  var inputCon = React.createRef();
+  useEffect(() => {
+    sidebarRef.current.style.display = "none";
+  });
+  var sideBarClose = () => {
+    console.log(sidebarRef);
+    sidebarRef.current.style.display = "none";
+  };
+  var sideBarOpen = () => {
+    sidebarRef.current.style.display = "block";
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Menu sideBarOpen={sideBarOpen} />
+      <SideBar sidebarRef={sidebarRef} sideBarClose={sideBarClose} />
+      <div className="details">
+        <Details inputConRef={inputCon} />
+      </div>
     </div>
   );
 }
