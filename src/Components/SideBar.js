@@ -29,7 +29,9 @@ export default function SideBar(props) {
             </div>
           ))
         ) : (
-          <h2>Nothing to show</h2>
+          <h2 style={{ marginLeft: "10px", fontSize: "18px" }}>
+            Nothing to show
+          </h2>
         )}
       </div>
     </div>
